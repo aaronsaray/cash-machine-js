@@ -119,6 +119,9 @@ var UserInterface = {
                     output = 'Failure: ' + e.message;
                 }
                 break;
+            case 'Q':
+                this.quit();
+                break;
 
             default:
                 output = 'Failure: Invalid Command';
@@ -140,6 +143,17 @@ var UserInterface = {
             output.push('$' + balance[i].bill + ' - ' + balance[i].amount);
         }
         return output.join('<br>');
+    },
+
+    /**
+     * Shuts it all down
+     */
+    quit: function() {
+        this.input.setAttribute('readonly', true);
+        var q = document.createElement('div');
+        q.setAttribute('id', 'quit');
+        document.body.appendChild(q);
+        document.body.style.cursor = 'not-allowed';
     }
 };
 
